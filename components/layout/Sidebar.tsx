@@ -1,7 +1,9 @@
 "use client";
-import { useState } from "react";
-import { Link, Outlet } from "react-router-dom";
 
+import { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import Image from "next/image";
 import {
   UnstyledButton,
   Tooltip,
@@ -10,22 +12,18 @@ import {
 } from "@mantine/core";
 import { IconArrowAutofitRight, IconBoxModel } from "@tabler/icons-react";
 import { one } from "@/assets";
-
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { panelActions } from "@/store/slices";
 import { useHandleTheme } from "@/styles/theme";
-import { ThemeSwitcherBtn, Layout, Notes } from "@/components";
+import { ThemeSwitcherBtn } from "@/components";
 import {
   mainLinksMockData,
   useSidebarStyles,
 } from "@/styles/components/sidebar";
-import Image from "next/image";
+import { Notes } from "@/components";
 
-{
-  /* Sidebar Icons */
-}
 const MainLinks = () => {
-  const [active, setActive] = useState("Home");
+  const pathname = usePathname();
   const { colorScheme } = useHandleTheme();
   const { classes, cx } = useSidebarStyles();
   const [isModalOpened, setIsModalOpened] = useState<boolean>(false);
@@ -34,28 +32,26 @@ const MainLinks = () => {
     <>
       {mainLinksMockData.map((link) => (
         <Tooltip
+          key={link.label}
           color={colorScheme === "dark" ? "#00dcff" : "#000"}
           label={link.label}
           position="right"
           withArrow
           transitionDuration={0}
-          key={link.label}
         >
           <UnstyledButton
-            onClick={() => setActive(link.label)}
             className={cx(classes.mainLink, {
-              [classes.mainLinkActive]: link.label === active,
+              [classes.mainLinkActive]:
+                pathname === `/${link.label.toLowerCase()}`,
             })}
           >
-            <span />
-            <Link to={link.label.toLowerCase()}>
+            <Link href={`/${link.label.toLowerCase()}`}>
               <link.icon stroke={1.5} />
             </Link>
           </UnstyledButton>
         </Tooltip>
       ))}
 
-      {/* Modal Button */}
       <Tooltip
         label="Notes"
         color={colorScheme === "dark" ? "#00dcff" : "#000"}
@@ -72,16 +68,13 @@ const MainLinks = () => {
         </span>
       </Tooltip>
 
-      {/* Modal */}
       <Modal opened={isModalOpened} onClose={() => setIsModalOpened(false)}>
         <Notes />
       </Modal>
     </>
   );
 };
-{
-  /* Sidebar Component */
-}
+
 const Sidebar = () => {
   const { classes } = useSidebarStyles();
   const { colorScheme, toggleColorScheme } = useHandleTheme();
@@ -94,26 +87,22 @@ const Sidebar = () => {
       colorScheme={colorScheme}
       toggleColorScheme={toggleColorScheme}
     >
-      <Layout>
-        {/* Main Side Bar */}
-        <div className={classes.aside}>
-          <div className={classes.logo} title="profile">
-            <Image width={100} height={100} src={one} alt="avatar1" />
-            <span title="show panel">
-              {!isPanelVisible && (
-                <IconArrowAutofitRight
-                  onClick={() => dispatch(switchVisibleStatus())}
-                />
-              )}
-            </span>
-          </div>
-          <div className={classes.IconsWrapper}>
-            <MainLinks />
-            <ThemeSwitcherBtn />
-          </div>
+      <div className={classes.aside}>
+        <div className={classes.logo} title="profile">
+          <Image width={100} height={100} src={one} alt="avatar1" />
+          <span title="show panel">
+            {!isPanelVisible && (
+              <IconArrowAutofitRight
+                onClick={() => dispatch(switchVisibleStatus())}
+              />
+            )}
+          </span>
         </div>
-        <Outlet />
-      </Layout>
+        <div className={classes.IconsWrapper}>
+          <MainLinks />
+          <ThemeSwitcherBtn />
+        </div>
+      </div>
     </ColorSchemeProvider>
   );
 };
