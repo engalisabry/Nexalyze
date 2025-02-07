@@ -1,3 +1,5 @@
+"use client";
+
 import { FC } from "react";
 import { useControlPanelStyles } from "@/styles/components/control-panel";
 import {

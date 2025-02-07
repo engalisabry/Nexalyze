@@ -11,3 +11,7 @@ export { default as SourceBoxes } from "@/components/features/control-panel/Sour
 
 // Theme
 export { default as ThemeSwitcherBtn } from "@/components/theme/ThemeSwitcherBtn";
+
+// Providers
+export { default as Providers } from "@/components/providers/Provider";
+export { default as MantineProvider } from "@/components/providers/MantineProvider";
