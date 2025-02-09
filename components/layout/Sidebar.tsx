@@ -1,79 +1,14 @@
-"use client";
-
-import { useState } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import Image from "next/image";
-import {
-  UnstyledButton,
-  Tooltip,
-  ColorSchemeProvider,
-  Modal,
-} from "@mantine/core";
-import { IconArrowAutofitRight, IconBoxModel } from "@tabler/icons-react";
+import { ColorSchemeProvider } from "@mantine/core";
+import { IconArrowAutofitRight } from "@tabler/icons-react";
 import { one } from "@/assets";
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { useAppSelector } from "@/lib/hooks/useAppSelector";
+import { useAppDispatch } from "@/lib/hooks/useAppDispatch";
 import { panelActions } from "@/store/slices";
 import { useHandleTheme } from "@/styles/theme";
 import { ThemeSwitcherBtn } from "@/components";
-import {
-  mainLinksMockData,
-  useSidebarStyles,
-} from "@/styles/components/sidebar";
-import { Notes } from "@/components";
-
-const MainLinks = () => {
-  const pathname = usePathname();
-  const { colorScheme } = useHandleTheme();
-  const { classes, cx } = useSidebarStyles();
-  const [isModalOpened, setIsModalOpened] = useState<boolean>(false);
-
-  return (
-    <>
-      {mainLinksMockData.map((link) => (
-        <Tooltip
-          key={link.label}
-          color={colorScheme === "dark" ? "#00dcff" : "#000"}
-          label={link.label}
-          position="right"
-          withArrow
-          transitionDuration={0}
-        >
-          <UnstyledButton
-            className={cx(classes.mainLink, {
-              [classes.mainLinkActive]:
-                pathname === `/${link.label.toLowerCase()}`,
-            })}
-          >
-            <Link href={`/${link.label.toLowerCase()}`}>
-              <link.icon stroke={1.5} />
-            </Link>
-          </UnstyledButton>
-        </Tooltip>
-      ))}
-
-      <Tooltip
-        label="Notes"
-        color={colorScheme === "dark" ? "#00dcff" : "#000"}
-        position="right"
-        withArrow
-        transitionDuration={0}
-      >
-        <span
-          className={classes.mainLink}
-          style={{ padding: "9px" }}
-          onClick={() => setIsModalOpened(!isModalOpened)}
-        >
-          <IconBoxModel />
-        </span>
-      </Tooltip>
-
-      <Modal opened={isModalOpened} onClose={() => setIsModalOpened(false)}>
-        <Notes />
-      </Modal>
-    </>
-  );
-};
+import { useSidebarStyles } from "@/styles/components/sidebar";
+import { PanelLinks } from "@/components";
 
 const Sidebar = () => {
   const { classes } = useSidebarStyles();
@@ -99,7 +34,7 @@ const Sidebar = () => {
           </span>
         </div>
         <div className={classes.IconsWrapper}>
-          <MainLinks />
+          <PanelLinks />
           <ThemeSwitcherBtn />
         </div>
       </div>

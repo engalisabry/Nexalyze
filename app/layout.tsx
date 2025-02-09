@@ -1,8 +1,3 @@
-"use client";
-
-import { MantineProvider } from "@mantine/core";
-import { Providers } from "@/components";
-
 export default function RootLayout({
   children,
 }: {
@@ -15,11 +10,7 @@ export default function RootLayout({
         <title>Nexalze</title>
         <meta name="description" content="Nexalze" />
       </head>
-      <body>
-        <Providers>
-          <MantineProvider>{children}</MantineProvider>
-        </Providers>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

@@ -1,5 +1,5 @@
-import { useAppSelector } from "@/store/hooks";
-import { useTheme } from "@/lib/hooks/use-theme";
+import { useAppSelector } from "@/lib/hooks/useAppSelector";
+import { useTheme } from "@/lib/hooks/useTheme";
 import { EChartsOption, SetOptionOpts } from "echarts";
 import { CSSProperties } from "react";
 

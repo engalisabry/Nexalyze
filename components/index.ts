@@ -1,5 +1,4 @@
 // Layout
-export { default as Layout } from "@/components/layout/page";
 export { default as Sidebar } from "@/components/layout/Sidebar";
 export { default as Content } from "@/components/layout/Content";
 
@@ -10,8 +9,6 @@ export { default as ReactECharts } from "@/components/features/control-panel/Rea
 export { default as SourceBoxes } from "@/components/features/control-panel/SourceBoxes";
 
 // Theme
-export { default as ThemeSwitcherBtn } from "@/components/theme/ThemeSwitcherBtn";
+export { default as ThemeSwitcherBtn } from "@/components/ThemeSwitcherBtn";
 
-// Providers
-export { default as Providers } from "@/components/providers/Provider";
-export { default as MantineProvider } from "@/components/providers/MantineProvider";
+export { default as PanelLinks } from "@/components/PanelLinks";

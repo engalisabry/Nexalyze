@@ -1,8 +1,8 @@
-"use client";
 import { useControlPanelStyles } from "@/styles/components/control-panel";
 import { Slider } from "@mantine/core";
 import { IconPlayerPause } from "@tabler/icons-react";
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { useAppSelector } from "@/lib/hooks/useAppSelector";
+import { useAppDispatch } from "@/lib/hooks/useAppDispatch";
 import { panelActions } from "@/store/slices";
 import { IconCircleChevronsLeft } from "@tabler/icons-react";
 import { EchartsOptions } from "@/lib/utils/EchartsOptions";

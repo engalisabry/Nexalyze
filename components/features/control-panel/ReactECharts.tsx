@@ -1,4 +1,3 @@
-"use client";
 import { useRef, useEffect, JSX } from "react";
 import { init, getInstanceByDom } from "echarts";
 import { ReactEChartsProps } from "@/types";

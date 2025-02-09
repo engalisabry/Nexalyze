@@ -1,4 +1,4 @@
-import { useTheme } from "@/lib/hooks/use-theme";
+import { useTheme } from "@/lib/hooks/useTheme";
 import { createStyles } from "@mantine/core";
 import { iconsStuff } from "@/types";
 

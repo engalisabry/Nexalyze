@@ -1,4 +1,3 @@
-"use client";
 import { ColorScheme } from "@mantine/core";
 import { useLocalStorage } from "@mantine/hooks";
 import { useEffect, useState } from "react";

@@ -1,10 +1,8 @@
-"use client";
-
 import { useNotesStyles } from "@/styles/components/notes";
 import { IconTextPlus, IconTrash } from "@tabler/icons-react";
 import { useEffect, useRef, useState } from "react";
 import { Input } from "@mantine/core";
-import { useAppDispatch } from "@/store/hooks";
+import { useAppDispatch } from "@/lib/hooks/useAppDispatch";
 import { notesActions } from "@/store/slices";
 
 const Notes = () => {

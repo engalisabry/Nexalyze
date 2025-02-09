@@ -1,6 +1,3 @@
-"use client";
-
-import { FC } from "react";
 import { useControlPanelStyles } from "@/styles/components/control-panel";
 import {
   IconBooks,
@@ -10,10 +7,11 @@ import {
   IconWorld,
 } from "@tabler/icons-react";
 import { iconsStuff } from "@/types";
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { useAppSelector } from "@/lib/hooks/useAppSelector";
+import { useAppDispatch } from "@/lib/hooks/useAppDispatch";
 import { panelActions } from "@/store/slices";
 
-const SourceBoxes: FC = () => {
+const SourceBoxes = () => {
   const dispatch = useAppDispatch();
   const { classes } = useControlPanelStyles();
   const { sourceBoxData } = panelActions;

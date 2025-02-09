@@ -1,5 +1,5 @@
-import { useTheme } from "@/lib/hooks/use-theme";
-import { useAppSelector } from "@/store/hooks";
+import { useTheme } from "@/lib/hooks/useTheme";
+import { useAppSelector } from "@/lib/hooks/useAppSelector";
 import { ColorScheme, createStyles } from "@mantine/core";
 import { useLocalStorage } from "@mantine/hooks";
 

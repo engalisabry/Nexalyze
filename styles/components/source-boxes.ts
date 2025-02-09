@@ -1,4 +1,4 @@
-import { useThemeConfig } from "@/lib/hooks/use-theme";
+import { useThemeConfig } from "@/lib/hooks/useTheme";
 import { createStyles } from "@mantine/core";
 
 export const useControlPanelBoxesStyles = createStyles(() => {

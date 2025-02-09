@@ -1,5 +1,4 @@
-"use client";
-import { useAppSelector } from "@/store/hooks";
+import { useAppSelector } from "@/lib/hooks/useAppSelector";
 
 const Content = () => {
   const TargetBoxLabel = useAppSelector((state) => state.panel.sourceBoxData);
